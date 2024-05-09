@@ -1,22 +1,20 @@
 import json
-import os
 
-from config import ROOT_DIR
 from src.file_saver import FileSaver
+from src.utils import get_end_word_vacancy
 
 
 class JSONSaver(FileSaver):
     """
     Класс для работы с JSON-файлами
     """
-    def __init__(self):
-        self.path_file = os.path.join(ROOT_DIR, "data", "vacancies.json")
+    def __init__(self, name="vacancies.json"):
+        super().__init__(name)
 
     def add_vacancy(self, data: list):
         """ Метод для добавления списка вакансий в файл"""
         try:
             data_file = self.get_vacancy()
-            print(data_file)
             i = len(data_file)
             self.delete_vacancy()
 
@@ -30,7 +28,11 @@ class JSONSaver(FileSaver):
         with open(self.path_file, 'w', encoding="utf-8") as json_file:
             json.dump(data_file, json_file, ensure_ascii=False, indent=4)
 
-        print(f'{len(data_file) - i} вакансии успешно записаны в файл {self.path_file}')
+        count = len(data_file) - i
+        if count:
+            print(f'{count} ваканси{get_end_word_vacancy(count)} успешно записаны(а) в файл {self.path_file}')
+        else:
+            print('Все вакансии ранее уже были добавлены в файл')
 
     def get_vacancy(self):
         """Метод возвращает список вакансий из файла"""

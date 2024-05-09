@@ -25,16 +25,22 @@ def filter_vacancies(list_vacancies: list, word_filter: list) -> list:
 
 def get_vacancies_by_salary(vacancies: list, range_salary: str) -> list | None:
     """ Функция возвращает список вакансий в заданном диапазоне зарплат"""
-    try:
+    if "-" in range_salary:
         s_min, s_max = range_salary.split('-')
-        s_min, s_max = int(s_min.strip()), int(s_max.strip())
-        vacancy_by_salary = [v for v in vacancies if (s_min <= v <= s_max)]
+        s_min, s_max = s_min.strip(), s_max.strip()
 
-        if not vacancy_by_salary:
-            raise EmptyList('В заданном диапазоне вакансии не найдены')
-        return vacancy_by_salary
+        if s_min.isdigit() and s_max.isdigit():
+            s_min, s_max = int(s_min), int(s_max)
+            vacancy_by_salary = [v for v in vacancies if (s_min <= v <= s_max)]
 
-    except ValueError:
+            if not vacancy_by_salary:
+                raise EmptyList('В заданном диапазоне вакансии не найдены')
+            return vacancy_by_salary
+
+        else:
+            print('Диапазон зарплат не задан или задан не верно')
+            raise EmptyList('Необходимо указать другой диапазон зарплат')
+    else:
         print('Диапазон зарплат не задан или задан не верно')
         raise EmptyList('Необходимо указать другой диапазон зарплат')
 
@@ -62,3 +68,14 @@ def print_vacancies(vacancies: list) -> None:
 def get_vacancies_list_from_dict(vacancies_list: list) -> list:
     """ Функция возвращает список вакансий, преобразованных в словарь"""
     return [v.create_dict() for v in vacancies_list]
+
+
+def get_end_word_vacancy(n: int) -> str:
+    """ Функция возвращает окончание слова ваканси* в зависимости от количества"""
+    if n in (11, 12, 13, 14):
+        return 'й'
+    elif n % 10 == 1:
+        return 'я'
+    elif n % 10 in (2, 3, 4):
+        return 'и'
+    return 'й'

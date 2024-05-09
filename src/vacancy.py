@@ -22,8 +22,9 @@ class Vacancy:
         return (f"ID: {self.id}\n"
                 f"Наименование: {self.name}\n"
                 f"URL: {self.url}\n"
-                # f"Опубликовано: {self.published_at}\n"
-                f"Опубликовано: {datetime.strptime(self.published_at, "%Y-%m-%dT%H:%M:%S%z").date()}\n"
+                f"Опубликовано: {
+                datetime.strptime(self.published_at, "%Y-%m-%dT%H:%M:%S%z").date().strftime('%d.%m.%Y')
+                }\n"
                 f"Зарплата: {self.get_str_salary()}\n"
                 f"Требования: {self.snippet}\n")
 
@@ -58,11 +59,8 @@ class Vacancy:
     @staticmethod
     def validate_salaries(value: int) -> int:
         """ Метод для валидации зарплаты"""
-        try:
-            if value:
-                return value
-        except TypeError:
-            return 0
+        if isinstance(value, int):
+            return value
         else:
             return 0
 
