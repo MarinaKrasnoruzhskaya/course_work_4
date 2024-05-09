@@ -6,7 +6,7 @@
 ------------
 1. Клонировать репозиторий
    ```sh
-   git clone https://
+   git clone https://github.com/MarinaKrasnoruzhskaya/course_work_4.git
    ```
 2. Установить Poetry
    ```sh
