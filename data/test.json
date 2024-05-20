@@ -1,0 +1,38 @@
+[
+    {
+        "id": "96712260",
+        "name": "Python developer junior+",
+        "URL": "https://hh.ru/vacancy/96712260",
+        "published_at": "2024-05-08T12:54:04+0300",
+        "salary": {
+            "from": 70000,
+            "to": 100000,
+            "currency": "RUR"
+        },
+        "snippet": "Опыт работы c ОС Linux. Знание Python 3.6+, веб-фреймоворков..."
+    },
+    {
+        "id": "97613568",
+        "name": "Python Developer",
+        "URL": "https://hh.ru/vacancy/97613568",
+        "published_at": "2024-04-22T12:54:04+0300",
+        "salary": {
+            "from": 0,
+            "to": 0,
+            "currency": ""
+        },
+        "snippet": "Опыт коммерческой разработки на Python от 2 лет(middle), от 4 лет(senior). Владение ..."
+    },
+    {
+        "id": "97406236",
+        "name": "Разработчик Backend",
+        "URL": "https://hh.ru/vacancy/97406236",
+        "published_at": "2024-05-06T12:54:04+0300",
+        "salary": {
+            "from": 180000,
+            "to": 0,
+            "currency": "RUR"
+        },
+        "snippet": "умение применять на практике шаблоны проектирования. - опыт разработки на Python 3..."
+    }
+]
